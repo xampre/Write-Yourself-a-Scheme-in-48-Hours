@@ -54,7 +54,7 @@ parseUnQuote :: Parser LispVal
 parseUnQuote = unquote <$> (char ',' >> parseExpr)
   where unquote x = List [Atom "unquote", x]
 
--- TODO: '(1. 2) -> (1 . 2)
+-- TODO: Why '(1. 2) is evaluated to (1 . 2)
 parseList :: Parser LispVal
 parseList =
   do char '(' >> skipMany space
